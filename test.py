@@ -9,6 +9,6 @@ while(cap.isOpened()):
 		cv2.imshow('result',frame)
 		k=cv2.waitKey(1)&0xFF
 		if(k==27):
-			break;
+			break
 cap.release()
 cv2.destroyAllWindows()
