@@ -21,7 +21,7 @@ while(cap.isOpened()):
     BGR_frame=cv2.cvtColor(RGB_frame_copym,cv2.COLOR_RGB2BGR)
     if(ret):
         cv2.imshow('image',frame)
-        cv2.imshow('mask',bin_mask)
+        cv2.imshow('mask',red_mask_2)
         cv2.imshow('result',BGR_frame)
         k=cv2.waitKey(1)&0xFF
         if(k==27):
