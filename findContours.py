@@ -4,7 +4,7 @@ import numpy as np
 cap=cv2.VideoCapture(-1)
 while(cap.isOpened()):
     ret,frame=cap.read()
-    frame= cv2.resize(frame,(205*8,154*8))
+    frame= cv2.resize(frame,(205*2,154*2))
     frame=cv2.flip(frame,0)
     RGB_frame=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     ####RGB파일로 변환####
@@ -18,7 +18,7 @@ while(cap.isOpened()):
     contours, hierarchy = cv2.findContours(bin_mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)##컨투어 찾기
     cv2.drawContours(RGB_frame_copy, contours, -1, (0,255,0), 3)
 
-    BGR_frame=cv2.cvtColor(RGB_frame_copym,cv2.COLOR_RGB2BGR)
+    BGR_frame=cv2.cvtColor(RGB_frame_copy,cv2.COLOR_RGB2BGR)
     if(ret):
         cv2.imshow('image',frame)
         cv2.imshow('mask',red_mask_2)
