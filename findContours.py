@@ -17,12 +17,23 @@ while(cap.isOpened()):
     RGB_frame_copy=RGB_frame.copy()
     contours, hierarchy = cv2.findContours(bin_mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)##컨투어 찾기
     cv2.drawContours(RGB_frame_copy, contours, -1, (0,255,0), 3)
-
+    mm=0
+    maxarea=0
+    for i,cnt in zip(range(0,len(contours)), contours):
+        if maxarea<cv2.contourArea(cnt):
+            maxarea=cv2.contourArea(cnt)
+            mm=i
+    ####가장큰컨투어찾기##
+    c0=contours[mm]
+    x0, y0 = zip(*np.squeeze(c0))
+    x, y, w, h = cv2.boundingRect(c0)
+    ####컨투어박스치기####
+    result_image=frame[y:y+h,x:x+w,:]
     BGR_frame=cv2.cvtColor(RGB_frame_copy,cv2.COLOR_RGB2BGR)
     if(ret):
         cv2.imshow('image',frame)
-        cv2.imshow('mask',red_mask_2)
-        cv2.imshow('result',BGR_frame)
+        cv2.imshow('contours',BGR_frame)
+        cv2.imshow('result',result_image)
         k=cv2.waitKey(1)&0xFF
         if(k==27):
             break
