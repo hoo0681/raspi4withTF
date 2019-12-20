@@ -9,7 +9,7 @@ while(cap.isOpened()):
     RGB_frame=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     ####RGB파일로 변환####
     hsv=cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
-    red_mask_2=cv2.inRange(hsv,(170,190,80),(180,255,255))
+    red_mask_2=cv2.inRange(hsv,(170,100,80),(180,255,255))
     ####빨간색필터거치기##
     bin_mask=red_mask_2/255
     bin_mask=bin_mask.astype('uint8')#contour를 찾기위해서는 소스이미지가 단일 채널의 8비트 이여야한다!!!!
