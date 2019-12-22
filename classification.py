@@ -66,6 +66,7 @@ while(cap.isOpened()):
     ####강아지만 자르기###
     test_data=cv2.resize(target_image,(224,224))
     dic['input']()[0][:,:]=test_data
+    dic['model'].invoke()
     ans=labels[np.argmax(dic['output']()[0])]
     ####추론#############
     result_image=frame[y:y+h,x:x+w,:]
