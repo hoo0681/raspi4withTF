@@ -24,8 +24,8 @@ def inv_contour(image,mask,x,y,w,h):
 def load_interperter(model_path):
     interpreter_=tflite.Interpreter(model_path=model_path)
     interpreter_.allocate_tensors()
-    input_ =interpreter_.tensor(interpreter.get_input_details()[0]['index'])
-    output = interpreter_.tensor(interpreter.get_output_details()[0]["index"])
+    input_ =interpreter_.tensor(interpreter_.get_input_details()[0]['index'])
+    output = interpreter_.tensor(interpreter_.get_output_details()[0]["index"])
     return {'model':interpreter_,'input':input_,'output':output}
 def load_labels(path):
     with open(path, 'r') as f:
