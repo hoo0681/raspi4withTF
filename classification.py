@@ -70,7 +70,7 @@ while(cap.isOpened()):
     ####추론#############
     result_image=frame[y:y+h,x:x+w,:]
     BGR_frame=cv2.cvtColor(RGB_frame_copy,cv2.COLOR_RGB2BGR)
-    cv2.putText(target_image,ans,, cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 1, (0, 255, 0))
+    cv2.putText(target_image,ans, cv2.FONT_HERSHEY_SCRIPT_SIMPLEX, 1, (0, 255, 0))
     if(ret):
         cv2.imshow('image',frame)
         cv2.imshow('contours',BGR_frame)
