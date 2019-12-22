@@ -14,10 +14,6 @@ def inv_contour(image,mask,x,y,w,h):
             maxarea=cv2.contourArea(cnt)
             mm=i
     c0=contours[mm]
-
-    #epsilon = 0.02 * cv2.arcLength(c0, True)#근사
-    #approx = cv2.approxPolyDP(c0, epsilon, True)#근사
-    
     X_,Y_,W_,H_=cv2.boundingRect(c0)
     return image[y+Y_:y+Y_+H_,x+X_:x+X_+W_,:]
 
@@ -71,7 +67,7 @@ while(cap.isOpened()):
     ####추론#############
     result_image=frame[y:y+h,x:x+w,:]
     BGR_frame=cv2.cvtColor(RGB_frame_copy,cv2.COLOR_RGB2BGR)
-    cv2.putText(frame,ans,(0,100), cv2.FONT_ITALIC, 1, (0, 255, 0))
+    cv2.putText(frame,ans,(0,100), cv2.FONT_ITALIC, 1, (0, 0, 0))
     if(ret):
         cv2.imshow('image',frame)
         cv2.imshow('contours',BGR_frame)
