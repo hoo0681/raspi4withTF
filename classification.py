@@ -32,8 +32,8 @@ def load_labels(path):
         return {i: line.strip() for i, line in enumerate(f.readlines())}
 
 
-dic=load_interperter("/home/pi/Downloads/mobilenet_V1_1.0_224_quant.tflite")
-labels=load_labels("/home/pi/Downloads/mobilenet_V1_244.txt")
+dic=load_interperter("/home/pi/Downloads/mobilenet_v1_1.0_224_quant.tflite")
+labels=load_labels("/home/pi/Downloads/labels_mobilenet_quant_v1_224.txt")
 cap=cv2.VideoCapture(-1)
 while(cap.isOpened()):
     ret,frame=cap.read()
