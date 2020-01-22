@@ -62,9 +62,8 @@ while(cap.isOpened()):
     ####추론#############
     result_image=frame[y:y+h,x:x+w,:]
     BGR_frame=cv2.cvtColor(RGB_frame_copy,cv2.COLOR_RGB2BGR)
-    cv2.putText(frame,ans,(0,100), cv2.FONT_ITALIC, 1, (0, 0, 0))
+    cv2.putText(BGR_frame,ans,(0,100), cv2.FONT_ITALIC, 1, (0, 0, 0))
     if(ret):
-        cv2.imshow('image',frame)
         cv2.imshow('contours',BGR_frame)
         cv2.imshow('cutimage',result_image)
         cv2.imshow('result',target_image)
