@@ -47,14 +47,8 @@ while(cap.isOpened()):
     RGB_frame_copy=RGB_frame.copy()
     contours, hierarchy = cv2.findContours(bin_mask, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)##컨투어 찾기
     cv2.drawContours(RGB_frame_copy, contours, -1, (0,255,0), 3)
-    mm=0
-    maxarea=0
-    for i,cnt in zip(range(0,len(contours)), contours):
-        if maxarea<cv2.contourArea(cnt):
-            maxarea=cv2.contourArea(cnt)
-            mm=i
+    c0=max(contours, key = cv2.contourArea)
     ####가장큰컨투어찾기##
-    c0=contours[mm]
     x0, y0 = zip(*np.squeeze(c0))
     x, y, w, h = cv2.boundingRect(c0)
     ####컨투어박스치기####
