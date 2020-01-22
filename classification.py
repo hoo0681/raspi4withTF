@@ -72,7 +72,7 @@ while(cap.isOpened()):
     if(ret):
         cv2.imshow('image',frame)
         cv2.imshow('contours',BGR_frame)
-        cv2.imshow('cutimage',result_image)
+        cv2.imshow('cutimage',test_data)
         cv2.imshow('result',target_image)
         k=cv2.waitKey(1)&0xFF
         if(k==27):
