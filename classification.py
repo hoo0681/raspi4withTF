@@ -30,7 +30,7 @@ def load_labels(path):
 
 dic=load_interperter("/home/pi/raspi4withTF/tflitemodel.tflite")
 #labels=load_labels("/home/pi/Downloads/labels_mobilenet_quant_v1_224.txt")
-labels={0:'dog',1:'cat'}
+labels={1:'dog',0:'cat'}
 cap=cv2.VideoCapture(-1)
 while(cap.isOpened()):
     ret,frame=cap.read()
@@ -59,7 +59,7 @@ while(cap.isOpened()):
     x, y, w, h = cv2.boundingRect(c0)
     ####컨투어박스치기####
     target_image=0
-    target_image=inv_contour(frame,red_mask_2,x,y,w,h)
+    target_image=inv_contour(RGB_frame,red_mask_2,x,y,w,h)
     ####강아지만 자르기###
     test_data=cv2.resize(target_image,(150,150))
     dic['input']()[0][:,:]=test_data
@@ -72,7 +72,7 @@ while(cap.isOpened()):
     if(ret):
         cv2.imshow('image',frame)
         cv2.imshow('contours',BGR_frame)
-        cv2.imshow('cutimage',test_data)
+        cv2.imshow('cutimage',result_image)
         cv2.imshow('result',target_image)
         k=cv2.waitKey(1)&0xFF
         if(k==27):
