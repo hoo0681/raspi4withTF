@@ -28,8 +28,9 @@ def load_labels(path):
         return {i: line.strip() for i, line in enumerate(f.readlines())}
 
 
-dic=load_interperter("/home/pi/Downloads/mobilenet_v1_1.0_224_quant.tflite")
-labels=load_labels("/home/pi/Downloads/labels_mobilenet_quant_v1_224.txt")
+dic=load_interperter("/home/pi/raspi4withTF/tflite_model.tflite")
+#labels=load_labels("/home/pi/Downloads/labels_mobilenet_quant_v1_224.txt")
+labels={0:'dog',1:'cat'}
 cap=cv2.VideoCapture(-1)
 while(cap.isOpened()):
     ret,frame=cap.read()
@@ -60,7 +61,7 @@ while(cap.isOpened()):
     target_image=0
     target_image=inv_contour(frame,red_mask_2,x,y,w,h)
     ####강아지만 자르기###
-    test_data=cv2.resize(target_image,(224,224))
+    test_data=cv2.resize(target_image,(150,150))
     dic['input']()[0][:,:]=test_data
     dic['model'].invoke()
     ans=labels[np.argmax(dic['output']()[0])]
