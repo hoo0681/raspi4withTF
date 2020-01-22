@@ -28,7 +28,7 @@ def load_labels(path):
         return {i: line.strip() for i, line in enumerate(f.readlines())}
 
 
-dic=load_interperter("/home/pi/raspi4withTF/tflite_model.tflite")
+dic=load_interperter("/home/pi/raspi4withTF/tflitemodel.tflite")
 #labels=load_labels("/home/pi/Downloads/labels_mobilenet_quant_v1_224.txt")
 labels={0:'dog',1:'cat'}
 cap=cv2.VideoCapture(-1)
