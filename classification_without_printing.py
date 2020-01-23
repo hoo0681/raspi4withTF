@@ -57,10 +57,8 @@ while(cap.isOpened()):
             ans=labels[np.argmax(dic['output']()[0])]
             print(ans)
     ####추론#############
-    if(ret):
-        k=cv2.waitKey(1)&0xFF
-        if(k==27):
-            break
+    if(cv2.waitKey(1)&0xFF==27):
+        break
 cap.release()
 cv2.destroyAllWindows()
 ####그리기############
