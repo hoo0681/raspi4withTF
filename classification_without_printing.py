@@ -32,6 +32,7 @@ while(cap.isOpened()):
     cv2.imshow('cam',frame)
     key=cv2.waitKey(1)
     if key==ord('s') :
+        ret,frame=cap.read()
         if(ret):
             frame= cv2.resize(frame,(205*2,154*2))
             frame=cv2.flip(frame,0)
