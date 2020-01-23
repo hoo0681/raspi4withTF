@@ -28,9 +28,11 @@ dic=load_interperter("/home/pi/raspi4withTF/tflitemodel.tflite")
 labels={1:'dog',0:'cat'}
 cap=cv2.VideoCapture(-1)
 while(cap.isOpened()):
+    ret,frame=cap.read()
+    cv2.imshow('cam',frame)
     key=cv2.waitKey(0)
     if key==ord('s') :
-        ret,frame=cap.read()
+        
         if(ret):
             frame= cv2.resize(frame,(205*2,154*2))
             frame=cv2.flip(frame,0)
@@ -57,7 +59,7 @@ while(cap.isOpened()):
             ans=labels[np.argmax(dic['output']()[0])]
             print(ans)
     ####추론#############
-    if(cv2.waitKey(1)&0xFF==27):
+    elif(key==27):
         break
 cap.release()
 cv2.destroyAllWindows()
