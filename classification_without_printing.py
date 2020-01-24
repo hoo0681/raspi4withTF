@@ -50,7 +50,7 @@ while(cap.isOpened()):
             x0, y0 = zip(*np.squeeze(c0))
             x, y, w, h = cv2.boundingRect(c0)
             result_image= cv2.rectangle(frame, (x, y), (x+w, y+h),(0,0,255), 7)
-            cv2.imshow('result_image',result_image)
+            
             ####컨투어박스치기####
             target_image=0
             target_image=inv_contour(RGB_frame,red_mask_2,x,y,w,h)
@@ -61,6 +61,8 @@ while(cap.isOpened()):
             dic['model'].invoke()
             ans=labels[np.argmax(dic['output']()[0])]
             print(ans)
+            cv2.putText(result_image,ans,(x,y)), cv2.FONT_ITALIC, 3, (0, 0, 255))
+            cv2.imshow('result_image',result_image)
     ####추론#############
     elif(key==27):
         break
