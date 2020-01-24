@@ -61,7 +61,7 @@ while(cap.isOpened()):
             dic['model'].invoke()
             ans=labels[np.argmax(dic['output']()[0])]
             print(ans)
-            cv2.putText(result_image,ans,(x,y+h/2), cv2.FONT_ITALIC, 3, (0, 0, 255))
+            cv2.putText(result_image,ans,(x,y+int(h/2)), cv2.FONT_ITALIC, 3, (0, 0, 255))
             cv2.imshow('result_image',result_image)
     ####추론#############
     elif(key==27):
