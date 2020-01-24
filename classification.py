@@ -60,7 +60,7 @@ while(cap.isOpened()):
     dic['model'].invoke()
     ans=labels[np.argmax(dic['output']()[0])]
     ####추론#############
-    result_image=frame[y:y+h,x:x+w,:]
+    result_image= cv2.rectangle(frame, (x, y), (x+w, y+h), 7)
     BGR_frame=cv2.cvtColor(RGB_frame_copy,cv2.COLOR_RGB2BGR)
     cv2.putText(BGR_frame,ans,(0,100), cv2.FONT_ITALIC, 1, (0, 0, 0))
     if(ret):
