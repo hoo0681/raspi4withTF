@@ -49,7 +49,7 @@ while(cap.isOpened()):
             ####가장큰컨투어찾기##
             x0, y0 = zip(*np.squeeze(c0))
             x, y, w, h = cv2.boundingRect(c0)
-            result_image= cv2.rectangle(frame, (x, y), (x+w, y+h), 7)
+            result_image= cv2.rectangle(frame, (x, y), (x+w, y+h),(0,0,255), 7)
             cv2.imshow('result_image',result_image)
             ####컨투어박스치기####
             target_image=0
