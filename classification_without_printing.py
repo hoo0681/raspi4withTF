@@ -49,9 +49,12 @@ while(cap.isOpened()):
             ####가장큰컨투어찾기##
             x0, y0 = zip(*np.squeeze(c0))
             x, y, w, h = cv2.boundingRect(c0)
+            result_image= cv2.rectangle(frame, (x, y), (x+w, y+h), 7)
+            cv2.imshow('result_image',result_image)
             ####컨투어박스치기####
             target_image=0
             target_image=inv_contour(RGB_frame,red_mask_2,x,y,w,h)
+            
             ####강아지만 자르기###
             test_data=cv2.resize(target_image,(150,150))
             dic['input']()[0][:,:]=test_data
