@@ -34,7 +34,7 @@ while(cap.isOpened()):
     if key==ord('s') :
         ret,frame=cap.read()
         if(ret):
-            frame= cv2.resize(frame,(205*2,154*2))
+            #frame= cv2.resize(frame,(205*2,154*2))
             frame=cv2.flip(frame,0)
             RGB_frame=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
             ####RGB파일로 변환####
